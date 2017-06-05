@@ -1,0 +1,266 @@
+/* global styles and styles for more than one section */
+
+html {
+  font-family: Helvetica, sans-serif;
+  font-size: 18px;
+  line-height: 1.4;
+}
+
+.container {
+  display: flex;
+  width: 960px;
+  margin: 0 auto;
+}
+
+
+/* class for items that are in a centered row on larger screens and
+   become a column on smaller screens */
+
+.gallery {
+  justify-content: center;
+}
+
+
+/* ------ header section  --- */
+
+header {
+  height: 31rem;
+  /* = 1rem distance from top and 30rem banner height */
+  background-image: url("../images/glasses-bg.png");
+  background-size: cover;
+  background-position: 35%;
+}
+
+.header-bar {
+  position: relative;
+  /* had to use positioning instead of margin here */
+  top: 1rem;
+  /* because margin also affected the background image in Chrome */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: white;
+  background-color: cadetblue;
+}
+
+.logo-group {
+  display: flex;
+  align-items: center;
+}
+
+.logo-group img {
+  height: 1.5rem;
+  width: auto;
+  padding-left: 2rem;
+  padding-right: 1rem;
+}
+
+nav ul {
+  margin: 0;
+}
+
+nav li, .menu-button {
+  display: inline-block;
+  padding: 1rem 2rem 1rem 0;
+}
+
+nav a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.menu-button {
+  display: none;
+  padding: 1rem 2rem 1rem 0;
+}
+
+.heading {
+  position: relative;
+  top: 1rem;
+  /* account for the positioning of the header-bar */
+  justify-content: flex-end;
+}
+
+h1 {
+  margin-top: 10rem;
+  margin-right: -2rem;
+  padding: 1.5rem 5rem;
+  font-weight: bold;
+  font-size: 2rem;
+  line-height: 1.2;
+  text-transform: uppercase;
+  background-color: white;
+}
+
+
+/* ------ main section - gallery with icons --- */
+
+figure {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 8rem;
+  width: 5rem;
+  padding: 3rem;
+  /* also gives 6rem between figures not between images themselves */
+}
+
+.image-box {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  /* following redline mock here - screenshot is different */
+  width: 5rem;
+  height: 5rem;
+}
+
+figure img {
+  width: 90%;
+  /* value not provided in redline mock */
+  height: auto;
+}
+
+img.narrow {
+  width: 70%;
+  /* 3.5rem are 70% of 5rem (the width of the image-box) */
+}
+
+figcaption {
+  text-align: center;
+}
+
+
+/* --- main section - gallery with paragraphs --- */
+
+.gallery-item {
+  width: 35%;
+  padding: 0 2.5%;
+}
+
+h2 {
+  margin: 0;
+  width: 10rem;
+  /* took value given for the box with padding here - matches visual of the mock */
+  padding: 0.5rem 1.25rem;
+  font-size: 1rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  color: white;
+  background-color: cadetblue;
+}
+
+p {
+  margin: 0;
+  padding-top: 1rem;
+  padding-bottom: 5rem;
+}
+
+
+/* --- footer --- */
+
+footer {
+  align-items: center;
+  background-color: azure;
+}
+
+footer img {
+  height: 1.5rem;
+  padding: 4rem 1rem 4rem 4rem;
+}
+
+
+/* adaptions for smaller screens */
+
+
+/* first breakpoint when the header-bar touches the window borders */
+
+@media only screen and (max-width: 960px) {
+  .container {
+    width: 100%;
+  }
+  header {
+    height: 22rem;
+  }
+  .header-bar {
+    top: 0;
+  }
+  .heading {
+    top: 0;
+    /* no need to account for the positioning of the header-bar anymore */
+  }
+  h1 {
+    margin-top: 5rem;
+    margin-right: 2rem;
+    padding: 1.33rem 4rem;
+    /* visually vertical padding matches font-size - not 0.75rem */
+    font-size: 1.33rem;
+  }
+}
+
+
+/* additional breakpoint when the header-bar gets crouded
+   only apply header adjustments and font-size */
+
+@media only screen and (max-width: 680px) {
+  header {
+    height: 17rem;
+    background-position: 20%;
+  }
+  h1 {
+    width: 100%;
+    margin-top: 9rem;
+    margin-right: 0;
+    padding: 1rem 0;
+    font-size: 1rem;
+    text-align: center;
+  }
+  .logo-group span, nav li {
+    display: none;
+  }
+  .menu-button {
+    display: inline-block;
+  }
+  figcaption, p {
+    font-size: 0.77rem;
+  }
+}
+
+
+/* last breakpoint when the galleries get crowded */
+
+@media only screen and (max-width: 585px) {
+  .gallery {
+    flex-flow: column;
+    align-items: center;
+    padding-top: 3.77rem;
+  }
+  figure, .image-box {
+    width: 5rem;
+    height: auto;
+    padding: 0;
+  }
+  figcaption {
+    padding: 1rem 0 1.54rem 0;
+  }
+  .last-caption {
+    padding-bottom: 0;
+  }
+  .gallery-item {
+    width: 100%;
+    padding: 0;
+  }
+  h2 {
+    width: 100%;
+    padding: 0.5rem 0;
+    text-align: center;
+  }
+  p {
+    padding-bottom: 4rem;
+  }
+  footer {
+    justify-content: center;
+  }
+  footer span {
+    display: none;
+  }
+}
